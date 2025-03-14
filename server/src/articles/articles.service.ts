@@ -78,7 +78,7 @@ export class ArticlesService {
                 id: true,
                 pictureUrl: true,
                 title: true,
-                updatedAt: true
+                createdAt: true
             },
             orderBy: {updatedAt: 'desc'}
         })
