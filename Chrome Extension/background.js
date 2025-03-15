@@ -1,6 +1,6 @@
 async function updateBlockingRules() {
     try {
-        const response = await fetch("http://localhost:3000/report/blocked");
+        const response = await fetch("http://localhost:3000/judol-report/list");
         const data = await response.json();
 
         // Format ulang data supaya sesuai aturan Chrome
