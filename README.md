@@ -1,6 +1,15 @@
 # Web App & Chrome Extension: Memberantas Judi Online
 
-# lawanjudol.blog
+## Tech Stack
+
+Proyek ini dikembangkan menggunakan teknologi berikut:
+
+- **Backend**: [NestJS](https://nestjs.com/) dan [TypeScript](https://www.typescriptlang.org/)
+- **Database**: [PostgreSQL](https://www.postgresql.org/) dan [Prisma ORM](https://www.prisma.io/)
+- **Frontend**: HTML, CSS, dan JavaScript (Tanpa Framework)
+- **Chrome Extension**: JavaScript
+
+---
 
 ## 1. Web App: Memberantas Judi Online
 
@@ -66,7 +75,15 @@ Agar web app dan Chrome Extension dapat berjalan dengan baik, pastikan backend s
    - Dokumentasi backend dapat ditemukan dalam folder `server/`.  
    - Ikuti langkah-langkah yang ada untuk menyiapkan server backend.
 
-2. **Menjalankan Backend**  
+2. **Membuat Database & File Konfigurasi (.env)**  
+   - Sebelum menjalankan backend, pastikan Anda telah membuat database, baik menggunakan **PostgreSQL**, **MySQL**, atau database lain yang didukung oleh backend ini.
+   - Buat file `.env` di dalam folder `server/` dan tambahkan konfigurasi database seperti berikut:
+     ```env
+     DATABASE_URL="postgresql://user:password@localhost:5432/nama_database"
+     ```
+   - Pastikan mengganti `user`, `password`, dan `nama_database` dengan kredensial database yang sesuai.
+
+3. **Menjalankan Backend**  
    - Pastikan semua dependensi telah diinstal sesuai dengan dokumentasi backend.
    - Jalankan server backend dengan perintah:
      ```sh
