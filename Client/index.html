@@ -3,35 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lapor Situs Judi Online</title>
+    <title>Lapor Judi Online | LawanJudol</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">lawanjudol.blog</div>
-        <a href="https://drive.google.com/drive/folders/1b7A9H-zn-UJLkndE2O-RJ_ws1U7A9O4P?usp=sharing" class="cta-button">Chrome Extension</a>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                LawanJudol
+            </div>
+            <div class="nav-links">
+                <a href="#tentang" class="nav-link">Tentang</a>
+                <a href="#statistik" class="nav-link">Statistik</a>
+                <a href="#artikel" class="nav-link">Artikel</a>
+                <a href="https://drive.google.com/drive/folders/1b7A9H-zn-UJLkndE2O-RJ_ws1U7A9O4P?usp=sharing" class="cta-button">
+                    <i class="fab fa-chrome"></i> Chrome Extension
+                </a>
+            </div>
+        </div>
     </nav>
     
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Bersama Melawan Judi Online</h1>
+            <p>Mari berpartisipasi dalam menciptakan internet yang lebih aman dengan melaporkan situs judi online ilegal.</p>
+        </div>
+    </div>
+
     <div class="container">
-        <!-- Bagian Pengaduan -->
+
         <section class="report-section">
-            <h1>Lapor Situs Judi Online</h1>
-            <form id="reportForm">
+            <div class="section-header">
+                <h2>Laporkan Situs Judi Online</h2>
+                <p>Bantu kami dengan melaporkan situs judi online yang Anda temukan</p>
+            </div>
+            <form id="reportForm" class="report-form">
                 <div class="input-group">
-                    <label for="urlInput">Masukkan URL Situs:</label>
-                    <input type="text" id="urlInput" placeholder="contoh: judl.123.com" required>
+                    <label for="urlInput">URL Situs</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-link"></i>
+                        <input type="text" id="urlInput" placeholder="Contoh: judl.123.com" required>
+                    </div>
                 </div>
-                <button type="submit">Laporkan</button>
+                <button type="submit">
+                    <i class="fas fa-paper-plane"></i>
+                    Laporkan Sekarang
+                </button>
             </form>
             <div id="message" class="message"></div>
         </section>
 
-        <!-- Bagian Artikel -->
-        <section class="articles-section">
-            <h2>Artikel Terkait Judi Online</h2>
-            <div id="articlesContainer" class="articles-container"></div>
+        <section id="statistik" class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-flag"></i>
+                    <h3>1,234+</h3>
+                    <p>Laporan Diterima</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-ban"></i>
+                    <h3>789+</h3>
+                    <p>Situs Diblokir</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <h3>5,000+</h3>
+                    <p>Pengguna Aktif</p>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <section id="artikel" class="articles-section">
+            <div class="section-header">
+                <h2>Artikel Terkini</h2>
+                <p>Informasi dan edukasi seputar bahaya judi online</p>
+            </div>
+            <div id="articlesContainer" class="articles-grid"></div>
         </section>
     </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>LawanJudol</h3>
+                <p>Bersama memberantas perjudian online demi Indonesia yang lebih baik.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Tautan Penting</h4>
+                <a href="#tentang">Tentang Kami</a>
+                <a href="#artikel">Artikel</a>
+                <a href="mailto:contact@lawanjudol.blog">Kontak</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LawanJudol. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

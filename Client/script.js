@@ -61,6 +61,34 @@ document.getElementById('reportForm').addEventListener('submit', async function(
 document.addEventListener("DOMContentLoaded", async function () {
     const articlesContainer = document.getElementById("articlesContainer");
 
+    // Show loading state
+    articlesContainer.innerHTML = `
+        <div class="article-card loading">
+            <div class="skeleton-loading article-image"></div>
+            <div class="article-content">
+                <div class="skeleton-loading article-title"></div>
+                <div class="skeleton-loading article-meta"></div>
+                <div class="skeleton-loading article-excerpt"></div>
+            </div>
+        </div>
+        <div class="article-card loading">
+            <div class="skeleton-loading article-image"></div>
+            <div class="article-content">
+                <div class="skeleton-loading article-title"></div>
+                <div class="skeleton-loading article-meta"></div>
+                <div class="skeleton-loading article-excerpt"></div>
+            </div>
+        </div>
+        <div class="article-card loading">
+            <div class="skeleton-loading article-image"></div>
+            <div class="article-content">
+                <div class="skeleton-loading article-title"></div>
+                <div class="skeleton-loading article-meta"></div>
+                <div class="skeleton-loading article-excerpt"></div>
+            </div>
+        </div>
+    `;
+
     async function fetchArticles() {
         try {
             const response = await fetch("http://localhost:3000/articles/cards");
@@ -74,14 +102,49 @@ document.addEventListener("DOMContentLoaded", async function () {
             // Bersihkan kontainer sebelum menambahkan artikel baru
             articlesContainer.innerHTML = "";
 
+            if (limitedArticles.length === 0) {
+                articlesContainer.innerHTML = `
+                    <div class="no-articles">
+                        <i class="far fa-newspaper"></i>
+                        <p>Belum ada artikel yang tersedia.</p>
+                    </div>
+                `;
+                return;
+            }
+
             limitedArticles.forEach(article => {
                 const articleCard = document.createElement("div");
                 articleCard.classList.add("article-card");
 
+                // Format date
+                const date = new Date(article.createdAt);
+                const formattedDate = date.toLocaleDateString("id-ID", {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+
+                // Create excerpt from content
+                const excerpt = article.content ? article.content.substring(0, 150) + '...' : '';
+
                 articleCard.innerHTML = `
-                    <img class="article-image" src="${article.pictureUrl || 'template.jpg'}" alt="${article.title}">
-                    <div class="article-title">${article.title}</div>
-                    <div class="article-meta">${new Date(article.createdAt).toLocaleDateString("id-ID")}</div>
+                    <img class="article-image" src="${article.pictureUrl || 'template.jpg'}" alt="${article.title}" 
+                         onerror="this.src='https://via.placeholder.com/400x200?text=LawanJudol'">
+                    <div class="article-content">
+                        <div class="article-title">${article.title}</div>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> ${formattedDate}</span>
+                            <span><i class="far fa-eye"></i> ${article.views || 0} views</span>
+                        </div>
+                        <div class="article-excerpt">${excerpt}</div>
+                    </div>
+                    <div class="article-footer">
+                        <span class="article-category">${article.category || 'Umum'}</span>
+                        <span class="article-readmore">
+                            Baca Selengkapnya 
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </div>
                 `;
 
                 // Tambahkan event listener agar saat card diklik, pindah ke halaman detail
@@ -93,7 +156,12 @@ document.addEventListener("DOMContentLoaded", async function () {
             });
         } catch (error) {
             console.error("Error fetching articles:", error);
-            articlesContainer.innerHTML = "<p>Gagal memuat artikel.</p>";
+            articlesContainer.innerHTML = `
+                <div class="error-message">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p>Gagal memuat artikel. Silakan coba lagi nanti.</p>
+                </div>
+            `;
         }
     }
 
